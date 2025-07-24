@@ -35,6 +35,9 @@ button{
     justify-content: center;
     font-size: 64px;
     z-index: 9999;
+    transition: none; /* 初期状態ではアニメーションなし */
+    transform: translateY(0); /* 初期位置 */
+    opacity: 1; /* 初期の不透明度 */
   }
   
   /* メインコンテンツは最初非表示 */
@@ -56,11 +59,35 @@ button{
     align-items: center;
     justify-content: center;
     font-size: 100px;
-    color: green;
+    color: green; /* 〇の色 */
     z-index: 10000;
+    animation: fadeInOut 1s ease; /* フェードイン・アウトのアニメーションを適用 */
 }
 
 .circle {
   font-size: 10rem; /* 〇のサイズ */
   color: rgb(146, 230, 146); /* 文字色 */
+}
+
+/* ×のスタイル */
+.cross {
+    font-size: 10rem; /* ×のサイズ */
+    color: rgb(230, 146, 146); /* ×の文字色 */
+    animation: fadeInOut 1s ease; /* アニメーションを追加 */
+}
+
+/* フェードイン・アウトのアニメーション */
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1.2);
+    }
 }

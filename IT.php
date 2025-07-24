@@ -2,9 +2,12 @@
 session_start();
 // データベースに接続するためのファイルを読み込む
 include_once './app/database/dbconnect.php';
+// ユーザ定義関数
+include_once './function/function.php';
 
 // データベースからquizテーブルのデータを取得
-$sql = "SELECT * FROM quiz WHERE quiz_id = 1"; // quiz_idが1の問題を取得するSQL文
+$sql = "SELECT * FROM quiz inner join category on quiz.category_id =
+         category.category_id where quiz_id=1"; // quiz_idが1の問題を取得するSQL文
 $stmt = $pdo->prepare($sql);
 $stmt->execute();
 
@@ -24,14 +27,14 @@ if (!$row) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>問題</title>
     <link rel="stylesheet" href="./CSS/Quizstyle.css">
 </head>
 <body>
 
     <header>
     <h1>QuiZion</h1>
-    <h1>IT</h1><br>
+    <h1><?php echo h($row['categoryname']); ?></h1><br>
     <a href="top.php">topへ戻る</a>
     </header>
 
@@ -40,28 +43,28 @@ if (!$row) {
     <div id="loading-screen"></div>
     <h3>問題</h3>
 
-    <p><?php print($row['title']) ?></p>
+    <p><?php echo h($row['title']); ?></p>
 
     <hr> <!--  「問題」の下に線を引くかどうか -->
     <br>
     
-    <input type="button" value="ア" class="choice"><?php print($row['choice1']) ?><br>
-    <input type="button" value="イ" class="choice"><?php print($row['choice2']) ?><br>
-    <input type="button" value="ウ" class="choice"><?php print($row['choice3']) ?><br>
-    <input type="button" value="エ" class="choice"><?php print($row['choice4']) ?><br>
+    <input type="button" value="ア" class="choice"><?php echo h($row['choice1']); ?><br>
+    <input type="button" value="イ" class="choice"><?php echo h($row['choice2']); ?><br>
+    <input type="button" value="ウ" class="choice" id="correctChoice"><?php echo h($row['choice3']); ?><br>
+    <input type="button" value="エ" class="choice"><?php echo h($row['choice4']); ?><br>
 
     <br><br>
 
     <input type="button" value="解答を見る" id="choice1">
       <!-- 真ん中に大きく表示される〇用の要素 -->
     <div id="overlay">
-        <div class="circle">〇</div> <!-- 〇を表示する要素 -->
+        <!-- <div class="circle">〇</div> 〇を表示する要素 -->
     </div>
 
     <div id="toggleElement" style="display:none;">
-        <h2>解答：><?php print($row['answer']) ?>「UPS」</h2>
+        <h2>解答：<?php echo h($row['answer']); ?>「UPS」</h2>
         
-        <p>UPS（Uninterruptible Power Supply）は、落雷などによる突発的な停電が発生したときに自家発電装置が電源を供給し始めるまでの間、サーバに電源を供給する装置です。また、電源の瞬断に対処したり停電時にシステムを安全に終了させるための役目を果たしたりします。</p>
+        <p><?php echo h($row['Explanation']);?></p>
 
         <button>次の問題へ</button>
         <form action="score.php" method="post">
