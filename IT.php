@@ -45,10 +45,10 @@ if (!$row) {
     <hr> <!--  「問題」の下に線を引くかどうか -->
     <br>
     
-    <input type="button" value="ア" class="choice"><?php print($row['choise1']) ?><br>
-    <input type="button" value="イ" class="choice"><?php print($row['choise2']) ?><br>
-    <input type="button" value="ウ" class="choice"><?php print($row['choise3']) ?><br>
-    <input type="button" value="エ" class="choice"><?php print($row['choise4']) ?><br>
+    <input type="button" value="ア" class="choice"><?php print($row['choice1']) ?><br>
+    <input type="button" value="イ" class="choice"><?php print($row['choice2']) ?><br>
+    <input type="button" value="ウ" class="choice"><?php print($row['choice3']) ?><br>
+    <input type="button" value="エ" class="choice"><?php print($row['choice4']) ?><br>
 
     <br><br>
 

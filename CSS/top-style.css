@@ -8,6 +8,12 @@
     box-sizing: border-box; */
 }
 
+.user-name {
+    text-align: left;
+    margin-right: 10px;
+    font-size: 20px;
+}
+
 .header {
     font-size: 50px;
 }
@@ -63,6 +69,8 @@
     border-top: 5px solid black;
     width: 90%;
 }
+
+
 
 
 

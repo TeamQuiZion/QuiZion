@@ -1,10 +1,19 @@
+<?php
+session_start();
+$username=$_SESSION['username'];
+if(isset($_SESSION['id'])){
+    $msg= "ようこそ、" . htmlspecialchars($username, ENT_QUOTES, 'UTF-8') . "さん！";
+}else{
+    $msg= "ログインしてください。";
+}
+?>
 <!DOCTYPE html>
 <html lang="ja">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>QuiZion</title>
     <link rel="stylesheet" href="./CSS/top-style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
 
@@ -13,6 +22,10 @@
 
 <body>
     <div class="body-top">
+        <div class="user-name">
+            <?php echo $msg; ?>
+            <a href="login.php">ログアウト</a>
+        </div>
         <div class="header">
             <h1>QuiZion</h1>
         </div>
@@ -80,10 +93,10 @@
 
 
     </div>
-    <div class="footer">
+    <!-- <div class="footer">
         ユーザー名 　
         <a href="login.php">ログアウト</a>
-    </div>
+    </div> -->
 </body>
 <script src="./JS/script.js"></script>
 
