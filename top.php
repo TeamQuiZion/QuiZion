@@ -27,7 +27,7 @@ if(isset($_SESSION['id'])){
             <a href="login.php">ログアウト</a>
         </div>
         <div class="header">
-            <h1>テスト</h1>
+            <h1>QuiZion</h1>
         </div>
 
         <div class="main-item">
