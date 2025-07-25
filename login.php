@@ -82,7 +82,7 @@ if (isset($_POST['submitButton'])) {
                         <?php endforeach; ?>
                     </div>
                 <?php endif; ?>
-                <input type="text" name="password" class="pass-form"><br>
+                <input type="password" name="password" class="pass-form"><br>
 
                 <?php if(!empty($error_message) && !empty($username) && !empty($password)): ?>
                     <p class="error" style="color:red;"><?php  echo $error_message['login']; ?></p>
