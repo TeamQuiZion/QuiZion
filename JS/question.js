@@ -1,34 +1,42 @@
-// カウントダウン
 
 
 document.addEventListener("DOMContentLoaded", function () {
-  let timeLeft = 3;
+  //isFirstはPHPから渡される
+  if( typeof isFirst !== "undefined" && isFirst) {
+    let timeLeft = 3;
+    const loadingScreen = document.getElementById('loading-screen');
+    const mainContent = document.getElementById('main-content');
+    function updateCountdown() {
+      if (timeLeft > 0) {
+        loadingScreen.textContent = timeLeft;
+      } else if (timeLeft === 0) {
+        loadingScreen.textContent = "GO!";
+      } else {
+        clearInterval(countdownInterval);
+        loadingScreen.style.transition = "transform 1s ease, opacity 1s ease"; // アニメーション設定
+        loadingScreen.style.transform = "translateY(100%)"; // 下に移動
+        loadingScreen.style.opacity = "0"; // フェードアウト
+        setTimeout(() => {
+          loadingScreen.style.display = "none"; // アニメーション後に非表示
+          if(mainContent) mainContent.style.display = "block"; // メインコンテンツ表示
+        },1000); // アニメーション時間と一致
+      }
+      timeLeft--;
+    }
+
+    updateCountdown(); // 初回表示
+    const countdownInterval = setInterval(updateCountdown, 1000);
+  }else{
+    //2回目以降はmain-contentを表示
+    const mainContent = document.getElementById('main-content');
+    if (mainContent) mainContent.style.display = "block";
+  }
+ 
   const choice1 = document.getElementById('choice1');
   const toggleElement = document.getElementById('toggleElement');
   let isOverlayShown = false; // フラグを追加
-  const loadingScreen = document.getElementById('loading-screen');
-  const mainContent = document.getElementById('main-content');
 
-  function updateCountdown() {
-    if (timeLeft > 0) {
-      loadingScreen.textContent = timeLeft;
-    } else if (timeLeft === 0) {
-      loadingScreen.textContent = "GO!";
-    } else {
-      clearInterval(countdownInterval);
-      loadingScreen.style.transition = "transform 1s ease, opacity 1s ease"; // アニメーション設定
-      loadingScreen.style.transform = "translateY(100%)"; // 下に移動
-      loadingScreen.style.opacity = "0"; // フェードアウト
-      setTimeout(() => {
-        loadingScreen.style.display = "none"; // アニメーション後に非表示
-        mainContent.style.display = "block"; // メインコンテンツ表示
-      }, 1000); // アニメーション時間と一致
-    }
-    timeLeft--;
-  }
 
-  updateCountdown(); // 初回表示
-  const countdownInterval = setInterval(updateCountdown, 1000);
 
     // 解答を見るボタン
   if (choice1) {
