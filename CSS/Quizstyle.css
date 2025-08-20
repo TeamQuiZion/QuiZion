@@ -1,6 +1,6 @@
 body {
-    margin-left: 600px;
-    margin-right: 600px;
+    margin-left: 500px;
+    margin-right: 500px;
 }
 
 /* .score-main {
@@ -14,7 +14,10 @@ header {
 
 .choice-btn {
     margin-top: 20px;
+    margin-right: 10px;
 }
+
+
 
 /* ローディング画面（カウントダウン）スタイル */
 #loading-screen {
@@ -70,6 +73,38 @@ header {
     animation: fadeInOut 1s ease; /* アニメーションを追加 */
 }
 
+#show-correct {
+    display: none; /* 初期状態では非表示 */
+    /* margin: 16px 0; */
+    font-weight: bold;
+    font-size: 30px;
+    margin-top: 32px;
+}
+
+#explanation {
+    display: none;
+    line-height: 2;         /* 行間を広げる */
+    margin-top: 32px;
+    margin-bottom: 32px;    /* 下にスペースを追加（ボタンとの間隔） */
+    /* font-size: 18px; */
+}
+
+.big-btn {
+    display: inline-block;
+    padding: 8px 24px;
+    font-size: 1rem;
+    border-radius: 6px;
+    background: #fff;           /* ボタンの背景を白 */
+    color: #000000;             /* 文字色を青系（見やすい色に） */
+    border: 2px solid #000000;  /* 枠線を青系 */
+    margin: 20px 0 0 0;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s, color 0.2s, border 0.2s, transform 0.1s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+
 /* フェードイン・アウトのアニメーション */
 @keyframes fadeInOut {
     0% {
@@ -85,3 +120,41 @@ header {
         transform: scale(1.2);
     }
 }
+
+.score-main {
+    text-align: center;
+    margin: 0 auto;
+}
+
+/* details内のテキストは左寄せに */
+.score-main details,
+.score-main details * {
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 600px; /* 必要なら幅を制限 */
+}
+
+/* summaryの文字を大きく */
+.score-main summary {
+    font-size: 1.3rem;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+    margin: 20px 0;
+}
+
+/* detailsが開いたときの内容を中央寄せ */
+.score-main details[open] > ol {
+    text-align: center;
+    margin: 0 auto;
+    padding: 0;
+    list-style-position: inside;
+}
+
+.score-box{
+    font-weight: bold;
+    font-size: 30px;
+}
+
+

@@ -1,47 +1,44 @@
-    const unifiedColors = ['#4CAF50', '#2196F3', '#FF9800'];
+let chartInstances = {};
 
-    function drawChart(id, dataValues) {
-
-    
-    
-    const ctx = document.getElementById(id).getContext('2d');
-
-    new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: ['1回目', '2回目', '3回目'],
-        datasets: [{
-          data: dataValues,
-          backgroundColor: unifiedColors,
-          borderRadius: 6
-        }]
-      },
-      options: {
-        indexAxis: 'y',
-        scales: {
-          x: {
-            min: 0,
-            max: 100,
-            display: false
-          },
-          y: {
-            ticks: { font: { size: 17 } }
-          }
-        },
-        plugins: {
-          legend: { display: false },
-          tooltip: { enabled: true }
-        },
-        responsive: true,
-        maintainAspectRatio: false
-      }
-    });
+function drawChart(id, dataValues) {
+    if (chartInstances[id]) {
+        chartInstances[id].destroy();
     }
+    const ctx = document.getElementById(id).getContext('2d');
+    chartInstances[id] = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['最新', '2回目', '3回目'],
+            datasets: [{
+                label: '正答率',
+                data: dataValues,
+                backgroundColor: ['#4CAF50', '#2196F3', '#FF9800'],
+                borderRadius: 8
+            }]
+        },
+        options: {
+            indexAxis: 'y', // 横棒グラフにする
+            plugins: {
+                legend: { display: false }
+            },
+            scales: {
+                x: {
+                    min: 0,
+                    max: 100,
+                    ticks: { stepSize: 20, callback: v => v + '%' }
+                },
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+}
 
-    // グラフ描画
-    drawChart('chart1', [80,90,70]);
-    drawChart('chart2', [80,90,70]);
-    drawChart('chart3', [80,90,70]);
+// グラフ描画
+drawChart('chart1', itRates);
+drawChart('chart2', enRates);
+drawChart('chart3', csRates);
 
 
 

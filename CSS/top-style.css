@@ -94,13 +94,14 @@
     }
 
     .bar-chart-wrapper {
-      width: 320px;
       background: #fff;
-      border: 1px solid #ccc;
-      border-radius: 12px;
-      padding: 10px;
-      box-shadow: 0 0 8px rgba(0,0,0,0.1);
-      margin-right: 20px;
+      border-radius: 16px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      padding: 18px 24px 24px 24px;
+      margin: 16px;
+      display: inline-block;
+      min-width: 340px;
+      text-align: center;
     }
 
     .bar-chart-wrapper span {
@@ -113,21 +114,21 @@
 
     .chart-title {
       text-align: center;
-      font-size: 14px;
+      font-size: 1.1rem;
+      font-weight: bold;
       margin-bottom: 8px;
       color: #333;
     }
 
     .accuracy-texts {
-      font-size: 12px;
-      color: #555;
+      font-size: 1rem;
+      color: #333;
       margin-bottom: 8px;
       display: flex;
       justify-content: space-around;
     }
 
     canvas {
-      width: 100% !important;
-      height: 120px !important;
-      max-width: 400px;
+      max-width: 300px;
+      max-height: 140px;
     }

@@ -10,7 +10,7 @@ if (!isset($_SESSION['quiz_set'])) {
         FROM quiz
         INNER JOIN answer ON answer.quiz_id = quiz.quiz_id
         INNER JOIN category ON quiz.category_id = category.category_id
-        WHERE quiz.category_id = 1
+        WHERE quiz.category_id = 2
         ORDER BY RAND() LIMIT 10");
     $_SESSION['quiz_set'] = $stmt->fetchAll(PDO::FETCH_ASSOC);
     $_SESSION['current_index'] = 0;

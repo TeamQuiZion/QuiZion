@@ -30,7 +30,7 @@ if (isset($_POST['submitButton'])) {
 
         if ($user && password_verify($password, $user['password'])) {
             // セッション保存
-            $_SESSION['id'] = $user['user_id'];
+            $_SESSION['user_id'] = $user['user_id'];
             $_SESSION['username'] = $user['username'];
             header('Location: top.php');
             exit;
