@@ -19,8 +19,8 @@ $rate = $total > 0 ? round(($score / $total) * 100, 1) : 0.0;
 // （任意）ここでDBに履歴をまとめて保存したい場合は、$answersをループしてINSERTしてください。
 
 // スコア履歴保存
-if (isset($_SESSION['id'])) { // ←ここを修正
-    $user_id = $_SESSION['id']; // ←ここも修正
+if (isset($_SESSION['user_id'])) { // ←修正
+    $user_id = $_SESSION['user_id']; // ←修正
     $category_id = $_SESSION['quiz_set'][0]['category_id']; // 1問目のカテゴリID
     $rate = $total > 0 ? round(($score / $total) * 100, 1) : 0.0; // 正答率
     $stmt = $pdo->prepare('INSERT INTO score_history (user_id, category_id, correct_rate) VALUES (?, ?, ?)');
